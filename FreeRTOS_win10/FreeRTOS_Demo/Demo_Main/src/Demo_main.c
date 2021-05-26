@@ -6,6 +6,9 @@ void RunFreeRTOS_Demo(void)
 #if (ENABLE_DEMO_1 == 1)
 	demo1();
 #endif
+#if (ENABLE_DEMO_TASK == 1)
+	Demo_Task1();
+#endif
 
 	/*< Start the scheduler */
 	vTaskStartScheduler();

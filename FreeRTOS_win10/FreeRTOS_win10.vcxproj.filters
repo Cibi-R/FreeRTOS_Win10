@@ -63,6 +63,12 @@
     <ClCompile Include="FreeRTOS_Demo\Demo_Main\src\Demo_main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\include.h">
@@ -164,6 +170,12 @@
     <ClInclude Include="include\DemoConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="FreeRTOS\Source\include\stdint.readme" />
@@ -178,5 +190,10 @@
     <Text Include="FreeRTOS\Source\lexicon.txt" />
     <Text Include="FreeRTOS\History.txt" />
     <Text Include="FreeRTOS\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="FreeRTOS_Demo\Demo_Task\image\task.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

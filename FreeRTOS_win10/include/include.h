@@ -19,6 +19,8 @@
 
 /*< Demo application header files */
 #include "FreeRTOS_Demo/Demo_Main/api/Demo_main.h"
+#include "FreeRTOS_Demo/Demo_Task/api/Demo_Task1.h"
+#include "FreeRTOS_Demo/Demo_Task/api/Demo_Task2.h"
 #include "FreeRTOS_Demo/Demo1/api/Demo1.h"
 
 #endif //__INCLUDE_H__

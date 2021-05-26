@@ -153,6 +153,8 @@
     <ClCompile Include="FreeRTOS\Source\timers.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo1\src\Demo1.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Main\src\Demo_main.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task1.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task2.c" />
     <ClCompile Include="FreeRTOS_Stub\FreeRTOS_Stub.c" />
     <ClCompile Include="FreeRTOS_Stub\Run-time-stats-utils.c" />
     <ClCompile Include="sys\sys.c" />
@@ -170,6 +172,8 @@
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcRecorder.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo1\api\Demo1.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Main\api\Demo_main.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task1.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task2.h" />
     <ClInclude Include="include\DemoConfig.h" />
     <ClInclude Include="include\include.h" />
     <ClInclude Include="FreeRTOS\Source\include\atomic.h" />
@@ -207,6 +211,9 @@
     <Text Include="FreeRTOS\readme.txt" />
     <Text Include="FreeRTOS\Source\lexicon.txt" />
     <Text Include="FreeRTOS\Source\portable\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="FreeRTOS_Demo\Demo_Task\image\task.JPG" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
