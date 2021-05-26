@@ -7,7 +7,7 @@
  * The FreeRTOS-specific parts of the trace recorder
  *
  * Terms of Use
- * This file is part of the trace recorder library (RECORDER), which is the
+ * This file is part of the trace recorder library (RECORDER), which is the 
  * intellectual property of Percepio AB (PERCEPIO) and provided under a
  * license as follows.
  * The RECORDER may be used free of charge for the purpose of recording data
@@ -16,14 +16,14 @@
  * You may distribute the RECORDER in its original source code form, assuming
  * this text (terms of use, disclaimer, copyright notice) is unchanged. You are
  * allowed to distribute the RECORDER with minor modifications intended for
- * configuration or porting of the RECORDER, e.g., to allow using it on a
+ * configuration or porting of the RECORDER, e.g., to allow using it on a 
  * specific processor, processor family or with a specific communication
  * interface. Any such modifications should be documented directly below
- * this comment block.
+ * this comment block.  
  *
  * Disclaimer
  * The RECORDER is being delivered to you AS IS and PERCEPIO makes no warranty
- * as to its use or performance. PERCEPIO does not and cannot warrant the
+ * as to its use or performance. PERCEPIO does not and cannot warrant the 
  * performance or results you may obtain by using the RECORDER or documentation.
  * PERCEPIO make no warranties, express or implied, as to noninfringement of
  * third party rights, merchantability, or fitness for any particular purpose.
@@ -71,34 +71,34 @@
 #endif
 
 #if (configUSE_TICKLESS_IDLE != 0 && (TRC_HWTC_TYPE == TRC_OS_TIMER_INCR || TRC_HWTC_TYPE == TRC_OS_TIMER_DECR))
-	/*
+	/* 	
 		The below error message is to alert you on the following issue:
-
-		The hardware port selected in trcConfig.h uses the operating system timer for the
+		
+		The hardware port selected in trcConfig.h uses the operating system timer for the 
 		timestamping, i.e., the periodic interrupt timer that drives the OS tick interrupt.
-
+				
 		When using "tickless idle" mode, the recorder needs an independent time source in
 		order to correctly record the durations of the idle times. Otherwise, the trace may appear
 		to have a different length than in reality, and the reported CPU load is also affected.
-
+		
 		You may override this warning by defining the TRC_CFG_ACKNOWLEDGE_TICKLESS_IDLE_WARNING
 		macro in your trcConfig.h file. But then the time scale may be incorrect during
 		tickless idle periods.
-
+		
 		To get this correct, override the default timestamping by setting TRC_CFG_HARDWARE_PORT
 		in trcConfig.h to TRC_HARDWARE_PORT_APPLICATION_DEFINED and define the HWTC macros
 		accordingly, using a free running counter or an independent periodic interrupt timer.
 		See trcHardwarePort.h for details.
-
-		For ARM Cortex-M3, M4 and M7 MCUs this is not an issue, since the recorder uses the
-		DWT cycle counter for timestamping in these cases.
+				
+		For ARM Cortex-M3, M4 and M7 MCUs this is not an issue, since the recorder uses the 
+		DWT cycle counter for timestamping in these cases.		
 	*/
-
-#ifndef TRC_CFG_ACKNOWLEDGE_TICKLESS_IDLE_WARNING
-#error Trace Recorder: This timestamping mode is not recommended with Tickless Idle.
-#endif
+	
+	#ifndef TRC_CFG_ACKNOWLEDGE_TICKLESS_IDLE_WARNING
+	#error Trace Recorder: This timestamping mode is not recommended with Tickless Idle.
+	#endif
 #endif /* (configUSE_TICKLESS_IDLE != 0 && (TRC_HWTC_TYPE == TRC_OS_TIMER_INCR || TRC_HWTC_TYPE == TRC_OS_TIMER_DECR)) */
-
+	
 #include "task.h"
 #include "queue.h"
 
@@ -152,9 +152,9 @@ uint32_t prvTraceGetQueueNumber(void* handle);
 
 #if (TRC_CFG_FREERTOS_VERSION < TRC_FREERTOS_VERSION_8_X_X)
 
-extern unsigned char ucQueueGetQueueNumber(xQueueHandle pxQueue);
-extern void vQueueSetQueueNumber(xQueueHandle pxQueue, unsigned char ucQueueNumber);
-extern unsigned char ucQueueGetQueueType(xQueueHandle pxQueue);
+extern unsigned char ucQueueGetQueueNumber( xQueueHandle pxQueue );
+extern void vQueueSetQueueNumber( xQueueHandle pxQueue, unsigned char ucQueueNumber );
+extern unsigned char ucQueueGetQueueType( xQueueHandle pxQueue );
 
 uint32_t prvTraceGetQueueNumber(void* handle)
 {
@@ -297,29 +297,29 @@ int cortex_a9_r5_enter_critical(void)
 {
 	uint32_t cs_type = CS_TYPE_INVALID;
 
-	if ((prvGetCPSR() & 0x001F) == 0x13) // CSPR (ASPR) mode = SVC
-	{
-		/* Executing in an ISR other than the context-switch (where interrupts might have been enabled, motivating a critical section). */
-		if (ulPortSetInterruptMask() == pdTRUE)
-		{
-			cs_type = CS_TYPE_ISR_MASK_NOT_CHANGED;
-		}
-		else
-		{
-			cs_type = CS_TYPE_ISR_MASK_CHANGED;
-		}
-	}
-	else if (uiTraceSystemState == TRC_STATE_IN_TASKSWITCH)
-	{
-		// In the context-switch code. All interrupts are already masked here, so don't modify the mask.
-		cs_type = CS_TYPE_NONE;
-	}
-	else if (uiTraceSystemState != TRC_STATE_IN_TASKSWITCH)
-	{
-		// Not within ISR or task-switch context, use a regular critical section.
-		vPortEnterCritical();
-		cs_type = CS_TYPE_TASK;
-	}
+    if ((prvGetCPSR() & 0x001F) == 0x13) // CSPR (ASPR) mode = SVC
+    {
+    	/* Executing in an ISR other than the context-switch (where interrupts might have been enabled, motivating a critical section). */
+    	if (ulPortSetInterruptMask() == pdTRUE)
+    	{
+    		cs_type = CS_TYPE_ISR_MASK_NOT_CHANGED;
+    	}
+    	else
+    	{
+    		cs_type = CS_TYPE_ISR_MASK_CHANGED;
+    	}
+    }
+    else if (uiTraceSystemState == TRC_STATE_IN_TASKSWITCH)
+    {
+    	// In the context-switch code. All interrupts are already masked here, so don't modify the mask.
+    	cs_type = CS_TYPE_NONE;
+    }
+    else if (uiTraceSystemState != TRC_STATE_IN_TASKSWITCH)
+    {
+    	// Not within ISR or task-switch context, use a regular critical section.
+    	vPortEnterCritical();
+    	cs_type = CS_TYPE_TASK;
+    }
 
 	return cs_type;
 }
@@ -328,22 +328,22 @@ void cortex_a9_r5_exit_critical(int cs_type)
 {
 	switch (cs_type)
 	{
-	case CS_TYPE_TASK:
-		vPortExitCritical();
-		break;
+		case CS_TYPE_TASK:
+			vPortExitCritical();
+			break;
 
-	case CS_TYPE_ISR_MASK_CHANGED:
-		vPortClearInterruptMask(pdFALSE);	// pdFALSE means it will reset the IRQ mask.
-		break;
+		case CS_TYPE_ISR_MASK_CHANGED:
+			vPortClearInterruptMask(pdFALSE);	// pdFALSE means it will reset the IRQ mask.
+			break;
 
-	case CS_TYPE_ISR_MASK_NOT_CHANGED:
-	case CS_TYPE_NONE:
-		// No action in these two cases.
-		break;
+		case CS_TYPE_ISR_MASK_NOT_CHANGED:
+		case CS_TYPE_NONE:
+			// No action in these two cases.
+			break;
 
-	default:
-		// Error, should not be possible;
-		for (;;);
+		default:
+			// Error, should not be possible;
+			for (;;);
 	}
 }
 #endif
@@ -385,7 +385,7 @@ void prvAddTaskToStackMonitor(void* task)
 void prvRemoveTaskFromStackMonitor(void* task)
 {
 	int i;
-
+	
 	for (i = 0; i < TRC_CFG_STACK_MONITOR_MAX_TASKS; i++)
 	{
 		if (tasksInStackMonitor[i].tcb == task)
@@ -401,7 +401,7 @@ void prvReportStackUsage()
 	static int i = 0;	/* Static index used to loop over the monitored tasks */
 	int count = 0;		/* The number of generated reports */
 	int initial = i;	/* Used to make sure we break if we are back at the inital value */
-
+	
 	do
 	{
 		/* Check the current spot */
@@ -429,7 +429,7 @@ void prvReportStackUsage()
 #endif /* defined(TRC_CFG_ENABLE_STACK_MONITOR) && (TRC_CFG_ENABLE_STACK_MONITOR == 1) && (TRC_CFG_SCHEDULING_ONLY == 0) */
 
 #if (TRC_CFG_RECORDER_MODE == TRC_RECORDER_MODE_STREAMING)
-
+	
 static void* pCurrentTCB = NULL;
 
 /* Monitored by TzCtrl task, that give warnings as User Events */
@@ -468,24 +468,24 @@ void vTraceEnable(int startOption)
 	if (HandleTzCtrl == NULL)
 	{
 		TRC_STREAM_PORT_INIT();
-
-		/* The #WFR channel means "Warnings from Recorder" and
-		 * is used to store warnings and errors from the recorder.
-		 * The abbreviation #WFR is used instead of the longer full name,
-		 * to avoid truncation by small slots in the symbol table.
-		 * This is translated in Tracealyzer and shown as the full name,
-		 * "Warnings from Recorder".
-		 *
-		 * Note: Requires that TRC_CFG_INCLUDE_USER_EVENTS is 1. */
-
-		trcWarningChannel = xTraceRegisterString("#WFR");
+		
+	   /* The #WFR channel means "Warnings from Recorder" and
+		* is used to store warnings and errors from the recorder.
+		* The abbreviation #WFR is used instead of the longer full name,
+		* to avoid truncation by small slots in the symbol table. 
+		* This is translated in Tracealyzer and shown as the full name,
+		* "Warnings from Recorder".
+		*
+		* Note: Requires that TRC_CFG_INCLUDE_USER_EVENTS is 1. */
+		
+		trcWarningChannel = xTraceRegisterString("#WFR"); 
 
 		/* Creates the TzCtrl task - receives trace commands (start, stop, ...) */
-#if defined(configSUPPORT_STATIC_ALLOCATION) && (configSUPPORT_STATIC_ALLOCATION == 1)
+		#if defined(configSUPPORT_STATIC_ALLOCATION) && (configSUPPORT_STATIC_ALLOCATION == 1)
 		HandleTzCtrl = xTaskCreateStatic(TzCtrl, STRING_CAST("TzCtrl"), TRC_CFG_CTRL_TASK_STACK_SIZE, NULL, TRC_CFG_CTRL_TASK_PRIORITY, stackTzCtrl, &tcbTzCtrl);
-#else
-		xTaskCreate(TzCtrl, STRING_CAST("TzCtrl"), TRC_CFG_CTRL_TASK_STACK_SIZE, NULL, TRC_CFG_CTRL_TASK_PRIORITY, &HandleTzCtrl);
-#endif
+		#else
+		xTaskCreate( TzCtrl, STRING_CAST("TzCtrl"), TRC_CFG_CTRL_TASK_STACK_SIZE, NULL, TRC_CFG_CTRL_TASK_PRIORITY, &HandleTzCtrl );
+		#endif
 
 		if (HandleTzCtrl == NULL)
 		{
@@ -499,9 +499,9 @@ void vTraceEnable(int startOption)
 		do
 		{
 			bytes = 0;
-
+			
 			status = TRC_STREAM_PORT_READ_DATA(&msg, sizeof(TracealyzerCommandType), (int32_t*)&bytes);
-
+			
 			if (status != 0)
 			{
 				prvTraceWarning(PSF_WARNING_STREAM_PORT_READ);
@@ -516,17 +516,18 @@ void vTraceEnable(int startOption)
 						/* On start, init and reset the timestamping */
 						TRC_PORT_SPECIFIC_INIT();
 					}
-
+					
 					prvProcessCommand(&msg);
 				}
 			}
-		} while (RecorderEnabled == 0);
+		}
+		while (RecorderEnabled == 0);
 	}
 	else if (startOption == TRC_START)
 	{
 		/* We start streaming directly - this assumes that the interface is ready! */
 		TRC_PORT_SPECIFIC_INIT();
-
+		
 		msg.cmdCode = CMD_SET_ACTIVE;
 		msg.param1 = 1;
 		prvProcessCommand(&msg);
@@ -658,7 +659,7 @@ uint32_t prvIsNewTCB(void* pNewTCB)
  ******************************************************************************/
 unsigned char prvTraceIsSchedulerSuspended(void)
 {
-	/* Assumed to be available in FreeRTOS. According to the FreeRTOS docs,
+    /* Assumed to be available in FreeRTOS. According to the FreeRTOS docs, 
 	INCLUDE_xTaskGetSchedulerState or configUSE_TIMERS must be set to 1 in
 	FreeRTOSConfig.h for this function to be available. */
 
@@ -710,11 +711,11 @@ static void prvCheckRecorderStatus(void)
 /*******************************************************************************
  * TzCtrl
  *
- * Task for sending the trace data from the internal buffer to the stream
+ * Task for sending the trace data from the internal buffer to the stream 
  * interface (assuming TRC_STREAM_PORT_USE_INTERNAL_BUFFER == 1) and for
  * receiving commands from Tracealyzer. Also does some diagnostics.
  ******************************************************************************/
-static portTASK_FUNCTION(TzCtrl, pvParameters)
+static portTASK_FUNCTION( TzCtrl, pvParameters )
 {
 	TracealyzerCommandType msg;
 	int32_t bytes = 0;
@@ -743,16 +744,16 @@ static portTASK_FUNCTION(TzCtrl, pvParameters)
 				}
 			}
 
-			/* If the internal buffer is disabled, the COMMIT macro instead sends the data directly
-			   from the "event functions" (using TRC_STREAM_PORT_WRITE_DATA). */
+/* If the internal buffer is disabled, the COMMIT macro instead sends the data directly 
+   from the "event functions" (using TRC_STREAM_PORT_WRITE_DATA). */			
 #if (TRC_STREAM_PORT_USE_INTERNAL_BUFFER == 1)
-			   /* If there is a buffer page, this sends it to the streaming interface using TRC_STREAM_PORT_WRITE_DATA. */
+			/* If there is a buffer page, this sends it to the streaming interface using TRC_STREAM_PORT_WRITE_DATA. */
 			bytes = prvPagedEventBufferTransfer();
 #endif			
-
-			/* If there was data sent or received (bytes != 0), loop around and repeat, if there is more data to send or receive.
-			Otherwise, step out of this loop and sleep for a while. */
-
+			
+		/* If there was data sent or received (bytes != 0), loop around and repeat, if there is more data to send or receive.
+		Otherwise, step out of this loop and sleep for a while. */		
+		
 		} while (bytes != 0);
 
 		if (xTraceIsRecordingEnabled())
@@ -1013,29 +1014,29 @@ void vTraceInitObjectHandleStack()
 {
 	objectHandleStacks.indexOfNextAvailableHandle[0] = objectHandleStacks.lowestIndexOfClass[0] = 0;
 	objectHandleStacks.indexOfNextAvailableHandle[1] = objectHandleStacks.lowestIndexOfClass[1] = (TRC_CFG_NQUEUE);
-	objectHandleStacks.indexOfNextAvailableHandle[2] = objectHandleStacks.lowestIndexOfClass[2] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE);
-	objectHandleStacks.indexOfNextAvailableHandle[3] = objectHandleStacks.lowestIndexOfClass[3] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX);
-	objectHandleStacks.indexOfNextAvailableHandle[4] = objectHandleStacks.lowestIndexOfClass[4] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK);
-	objectHandleStacks.indexOfNextAvailableHandle[5] = objectHandleStacks.lowestIndexOfClass[5] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR);
-	objectHandleStacks.indexOfNextAvailableHandle[6] = objectHandleStacks.lowestIndexOfClass[6] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)+(TRC_CFG_NTIMER);
-	objectHandleStacks.indexOfNextAvailableHandle[7] = objectHandleStacks.lowestIndexOfClass[7] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)+(TRC_CFG_NTIMER)+(TRC_CFG_NEVENTGROUP);
-	objectHandleStacks.indexOfNextAvailableHandle[8] = objectHandleStacks.lowestIndexOfClass[8] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)+(TRC_CFG_NTIMER)+(TRC_CFG_NEVENTGROUP)+(TRC_CFG_NSTREAMBUFFER);
+	objectHandleStacks.indexOfNextAvailableHandle[2] = objectHandleStacks.lowestIndexOfClass[2] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE);
+	objectHandleStacks.indexOfNextAvailableHandle[3] = objectHandleStacks.lowestIndexOfClass[3] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX);
+	objectHandleStacks.indexOfNextAvailableHandle[4] = objectHandleStacks.lowestIndexOfClass[4] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK);
+	objectHandleStacks.indexOfNextAvailableHandle[5] = objectHandleStacks.lowestIndexOfClass[5] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR);
+	objectHandleStacks.indexOfNextAvailableHandle[6] = objectHandleStacks.lowestIndexOfClass[6] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) + (TRC_CFG_NTIMER);
+	objectHandleStacks.indexOfNextAvailableHandle[7] = objectHandleStacks.lowestIndexOfClass[7] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) + (TRC_CFG_NTIMER) + (TRC_CFG_NEVENTGROUP);
+	objectHandleStacks.indexOfNextAvailableHandle[8] = objectHandleStacks.lowestIndexOfClass[8] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) + (TRC_CFG_NTIMER) + (TRC_CFG_NEVENTGROUP) + (TRC_CFG_NSTREAMBUFFER);
 
-	objectHandleStacks.highestIndexOfClass[0] = (TRC_CFG_NQUEUE)-1;
-	objectHandleStacks.highestIndexOfClass[1] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)-1;
-	objectHandleStacks.highestIndexOfClass[2] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)-1;
-	objectHandleStacks.highestIndexOfClass[3] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)-1;
-	objectHandleStacks.highestIndexOfClass[4] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)-1;
-	objectHandleStacks.highestIndexOfClass[5] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)+(TRC_CFG_NTIMER)-1;
-	objectHandleStacks.highestIndexOfClass[6] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)+(TRC_CFG_NTIMER)+(TRC_CFG_NEVENTGROUP)-1;
-	objectHandleStacks.highestIndexOfClass[7] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)+(TRC_CFG_NTIMER)+(TRC_CFG_NEVENTGROUP)+(TRC_CFG_NSTREAMBUFFER)-1;
-	objectHandleStacks.highestIndexOfClass[8] = (TRC_CFG_NQUEUE)+(TRC_CFG_NSEMAPHORE)+(TRC_CFG_NMUTEX)+(TRC_CFG_NTASK)+(TRC_CFG_NISR)+(TRC_CFG_NTIMER)+(TRC_CFG_NEVENTGROUP)+(TRC_CFG_NSTREAMBUFFER)+(TRC_CFG_NMESSAGEBUFFER)-1;
+	objectHandleStacks.highestIndexOfClass[0] = (TRC_CFG_NQUEUE) - 1;
+	objectHandleStacks.highestIndexOfClass[1] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) - 1;
+	objectHandleStacks.highestIndexOfClass[2] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) - 1;
+	objectHandleStacks.highestIndexOfClass[3] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) - 1;
+	objectHandleStacks.highestIndexOfClass[4] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) - 1;
+	objectHandleStacks.highestIndexOfClass[5] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) + (TRC_CFG_NTIMER) - 1;
+	objectHandleStacks.highestIndexOfClass[6] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) + (TRC_CFG_NTIMER) + (TRC_CFG_NEVENTGROUP) - 1;
+	objectHandleStacks.highestIndexOfClass[7] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) + (TRC_CFG_NTIMER) + (TRC_CFG_NEVENTGROUP) + (TRC_CFG_NSTREAMBUFFER) - 1;
+	objectHandleStacks.highestIndexOfClass[8] = (TRC_CFG_NQUEUE) + (TRC_CFG_NSEMAPHORE) + (TRC_CFG_NMUTEX) + (TRC_CFG_NTASK) + (TRC_CFG_NISR) + (TRC_CFG_NTIMER) + (TRC_CFG_NEVENTGROUP) + (TRC_CFG_NSTREAMBUFFER) + (TRC_CFG_NMESSAGEBUFFER) - 1;
 }
 
 /* Returns the "Not enough handles" error message for this object class */
 const char* pszTraceGetErrorNotEnoughHandles(traceObjectClass objectclass)
 {
-	switch (objectclass)
+	switch(objectclass)
 	{
 	case TRACE_CLASS_TASK:
 		return "Not enough TASK handles - increase TRC_CFG_NTASK in trcSnapshotConfig.h";
@@ -1069,7 +1070,7 @@ const char* pszTraceGetErrorNotEnoughHandles(traceObjectClass objectclass)
 #if (TRC_CFG_INCLUDE_ISR_TRACING == 1)
 unsigned char prvTraceIsSchedulerSuspended(void)
 {
-	/* Assumed to be available in FreeRTOS. According to the FreeRTOS docs,
+    /* Assumed to be available in FreeRTOS. According to the FreeRTOS docs, 
 	INCLUDE_xTaskGetSchedulerState or configUSE_TIMERS must be set to 1 in
 	FreeRTOSConfig.h for this function to be available. */
 

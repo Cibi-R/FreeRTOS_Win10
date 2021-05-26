@@ -88,7 +88,7 @@
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_win10\FreeRTOS_win10\FreeRTOS-Plus-Trace\Include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_win10\FreeRTOS_win10\trc\api;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_win10\FreeRTOS_win10\os\FreeRTOS\Source\portable\MSVC-MingW;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_win10\FreeRTOS_win10\os\FreeRTOS\Source\include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_win10\FreeRTOS_win10\cfg;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_win10\FreeRTOS_win10\include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_win10\FreeRTOS_win10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS-Plus-Trace\Include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS-Plus-Trace\config;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOSConfig;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS\Source\portable\MSVC-MingW;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS\Source\include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,10 +113,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_WIN32_WINNT=0x0601;WINVER=0x400;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS\Source\include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS\Source\portable\MSVC-MingW;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOSConfig;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS-Plus-Trace\config;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS-Plus-Trace\Include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4574;4820;4668;4255;4710;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,22 +142,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="os\FreeRTOS\Source\croutine.c" />
-    <ClCompile Include="os\FreeRTOS\Source\event_groups.c" />
-    <ClCompile Include="os\FreeRTOS\Source\list.c" />
-    <ClCompile Include="os\FreeRTOS\Source\portable\MemMang\heap_5.c" />
-    <ClCompile Include="os\FreeRTOS\Source\portable\MSVC-MingW\port.c" />
-    <ClCompile Include="os\FreeRTOS\Source\queue.c" />
-    <ClCompile Include="os\FreeRTOS\Source\stream_buffer.c" />
-    <ClCompile Include="os\FreeRTOS\Source\tasks.c" />
-    <ClCompile Include="os\FreeRTOS\Source\timers.c" />
-    <ClCompile Include="sys\FreeRTOS_Stub.c" />
+    <ClCompile Include="FreeRTOS\Source\croutine.c" />
+    <ClCompile Include="FreeRTOS\Source\event_groups.c" />
+    <ClCompile Include="FreeRTOS\Source\list.c" />
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_5.c" />
+    <ClCompile Include="FreeRTOS\Source\portable\MSVC-MingW\port.c" />
+    <ClCompile Include="FreeRTOS\Source\queue.c" />
+    <ClCompile Include="FreeRTOS\Source\stream_buffer.c" />
+    <ClCompile Include="FreeRTOS\Source\tasks.c" />
+    <ClCompile Include="FreeRTOS\Source\timers.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo1\src\Demo1.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Main\src\Demo_main.c" />
+    <ClCompile Include="FreeRTOS_Stub\FreeRTOS_Stub.c" />
+    <ClCompile Include="FreeRTOS_Stub\Run-time-stats-utils.c" />
     <ClCompile Include="sys\sys.c" />
-    <ClCompile Include="trc\src\trcKernelPort.c" />
-    <ClCompile Include="trc\src\trcSnapshotRecorder.c" />
+    <ClCompile Include="FreeRTOS-Plus-Trace\trcKernelPort.c" />
+    <ClCompile Include="FreeRTOS-Plus-Trace\trcSnapshotRecorder.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cfg\FreeRTOSConfig.h" />
+    <ClInclude Include="FreeRTOSConfig\FreeRTOSConfig.h" />
     <ClInclude Include="cfg\freertos_config\FreeRTOSConfig.h" />
     <ClInclude Include="cfg\freertos_config\trcConfig.h" />
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcExtensions.h" />
@@ -163,41 +168,45 @@
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcKernelPort.h" />
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcPortDefines.h" />
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcRecorder.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo1\api\Demo1.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Main\api\Demo_main.h" />
+    <ClInclude Include="include\DemoConfig.h" />
     <ClInclude Include="include\include.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\atomic.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\croutine.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\deprecated_definitions.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\event_groups.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\FreeRTOS.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\list.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\message_buffer.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\mpu_prototypes.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\mpu_wrappers.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\portable.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\projdefs.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\queue.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\semphr.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\StackMacros.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\stack_macros.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\stream_buffer.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\task.h" />
-    <ClInclude Include="os\FreeRTOS\Source\include\timers.h" />
-    <ClInclude Include="os\FreeRTOS\Source\portable\MSVC-MingW\portmacro.h" />
-    <ClInclude Include="sys\FreeRTOS_Stub.h" />
-    <ClInclude Include="trc\api\trcConfig.h" />
-    <ClInclude Include="trc\api\trcSnapshotConfig.h" />
+    <ClInclude Include="FreeRTOS\Source\include\atomic.h" />
+    <ClInclude Include="FreeRTOS\Source\include\croutine.h" />
+    <ClInclude Include="FreeRTOS\Source\include\deprecated_definitions.h" />
+    <ClInclude Include="FreeRTOS\Source\include\event_groups.h" />
+    <ClInclude Include="FreeRTOS\Source\include\FreeRTOS.h" />
+    <ClInclude Include="FreeRTOS\Source\include\list.h" />
+    <ClInclude Include="FreeRTOS\Source\include\message_buffer.h" />
+    <ClInclude Include="FreeRTOS\Source\include\mpu_prototypes.h" />
+    <ClInclude Include="FreeRTOS\Source\include\mpu_wrappers.h" />
+    <ClInclude Include="FreeRTOS\Source\include\portable.h" />
+    <ClInclude Include="FreeRTOS\Source\include\projdefs.h" />
+    <ClInclude Include="FreeRTOS\Source\include\queue.h" />
+    <ClInclude Include="FreeRTOS\Source\include\semphr.h" />
+    <ClInclude Include="FreeRTOS\Source\include\StackMacros.h" />
+    <ClInclude Include="FreeRTOS\Source\include\stack_macros.h" />
+    <ClInclude Include="FreeRTOS\Source\include\stream_buffer.h" />
+    <ClInclude Include="FreeRTOS\Source\include\task.h" />
+    <ClInclude Include="FreeRTOS\Source\include\timers.h" />
+    <ClInclude Include="FreeRTOS\Source\portable\MSVC-MingW\portmacro.h" />
+    <ClInclude Include="FreeRTOS-Plus-Trace\config\trcConfig.h" />
+    <ClInclude Include="FreeRTOS-Plus-Trace\config\trcSnapshotConfig.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="os\FreeRTOS\links_to_doc_pages_for_the_demo_projects.url" />
-    <None Include="os\FreeRTOS\Source\include\stdint.readme" />
-    <None Include="os\FreeRTOS\Source\portable\MemMang\ReadMe.url" />
+    <None Include="docs\161204_Mastering_the_FreeRTOS_Real_Time_Kernel-A_Hands-On_Tutorial_Guide.pdf" />
+    <None Include="docs\FreeRTOS_Reference_Manual_V10.0.0.pdf" />
+    <None Include="FreeRTOS\links_to_doc_pages_for_the_demo_projects.url" />
+    <None Include="FreeRTOS\Source\include\stdint.readme" />
+    <None Include="FreeRTOS\Source\portable\MemMang\ReadMe.url" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="os\FreeRTOS\History.txt" />
-    <Text Include="os\FreeRTOS\License\license.txt" />
-    <Text Include="os\FreeRTOS\readme.txt" />
-    <Text Include="os\FreeRTOS\Source\lexicon.txt" />
-    <Text Include="os\FreeRTOS\Source\portable\readme.txt" />
+    <Text Include="FreeRTOS\History.txt" />
+    <Text Include="FreeRTOS\License\license.txt" />
+    <Text Include="FreeRTOS\readme.txt" />
+    <Text Include="FreeRTOS\Source\lexicon.txt" />
+    <Text Include="FreeRTOS\Source\portable\readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

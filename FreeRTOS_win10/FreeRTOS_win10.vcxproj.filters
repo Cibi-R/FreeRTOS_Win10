@@ -18,40 +18,49 @@
     <ClCompile Include="sys\sys.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\portable\MSVC-MingW\port.c">
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_5.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\croutine.c">
+    <ClCompile Include="FreeRTOS\Source\portable\MSVC-MingW\port.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\event_groups.c">
+    <ClCompile Include="FreeRTOS\Source\croutine.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\list.c">
+    <ClCompile Include="FreeRTOS\Source\event_groups.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\queue.c">
+    <ClCompile Include="FreeRTOS\Source\list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\stream_buffer.c">
+    <ClCompile Include="FreeRTOS\Source\queue.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\tasks.c">
+    <ClCompile Include="FreeRTOS\Source\stream_buffer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\timers.c">
+    <ClCompile Include="FreeRTOS\Source\tasks.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="os\FreeRTOS\Source\portable\MemMang\heap_5.c">
+    <ClCompile Include="FreeRTOS\Source\timers.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="trc\src\trcKernelPort.c">
+    <ClCompile Include="FreeRTOS-Plus-Trace\trcKernelPort.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="trc\src\trcSnapshotRecorder.c">
+    <ClCompile Include="FreeRTOS-Plus-Trace\trcSnapshotRecorder.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sys\FreeRTOS_Stub.c">
+    <ClCompile Include="FreeRTOS_Stub\FreeRTOS_Stub.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS_Stub\Run-time-stats-utils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo1\src\Demo1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Main\src\Demo_main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,76 +68,10 @@
     <ClInclude Include="include\include.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\atomic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\croutine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\deprecated_definitions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\event_groups.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\FreeRTOS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\message_buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\mpu_prototypes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\mpu_wrappers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\portable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\projdefs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\semphr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\stack_macros.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\StackMacros.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\stream_buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\task.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\include\timers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="os\FreeRTOS\Source\portable\MSVC-MingW\portmacro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cfg\freertos_config\FreeRTOSConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cfg\freertos_config\trcConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cfg\FreeRTOSConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="trc\api\trcConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="trc\api\trcSnapshotConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcRecorder.h">
@@ -146,20 +89,94 @@
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcPortDefines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sys\FreeRTOS_Stub.h">
+    <ClInclude Include="FreeRTOS\Source\include\atomic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\croutine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\deprecated_definitions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\event_groups.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\FreeRTOS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\message_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\mpu_prototypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\mpu_wrappers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\portable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\projdefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\semphr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\stack_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\StackMacros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\stream_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\task.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\include\timers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\Source\portable\MSVC-MingW\portmacro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS-Plus-Trace\config\trcConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS-Plus-Trace\config\trcSnapshotConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOSConfig\FreeRTOSConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo1\api\Demo1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Main\api\Demo_main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DemoConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="os\FreeRTOS\links_to_doc_pages_for_the_demo_projects.url" />
-    <None Include="os\FreeRTOS\Source\portable\MemMang\ReadMe.url" />
-    <None Include="os\FreeRTOS\Source\include\stdint.readme" />
+    <None Include="FreeRTOS\Source\include\stdint.readme" />
+    <None Include="FreeRTOS\Source\portable\MemMang\ReadMe.url" />
+    <None Include="FreeRTOS\links_to_doc_pages_for_the_demo_projects.url" />
+    <None Include="docs\161204_Mastering_the_FreeRTOS_Real_Time_Kernel-A_Hands-On_Tutorial_Guide.pdf" />
+    <None Include="docs\FreeRTOS_Reference_Manual_V10.0.0.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="os\FreeRTOS\Source\lexicon.txt" />
-    <Text Include="os\FreeRTOS\readme.txt" />
-    <Text Include="os\FreeRTOS\History.txt" />
-    <Text Include="os\FreeRTOS\Source\portable\readme.txt" />
-    <Text Include="os\FreeRTOS\License\license.txt" />
+    <Text Include="FreeRTOS\License\license.txt" />
+    <Text Include="FreeRTOS\Source\portable\readme.txt" />
+    <Text Include="FreeRTOS\Source\lexicon.txt" />
+    <Text Include="FreeRTOS\History.txt" />
+    <Text Include="FreeRTOS\readme.txt" />
   </ItemGroup>
 </Project>
