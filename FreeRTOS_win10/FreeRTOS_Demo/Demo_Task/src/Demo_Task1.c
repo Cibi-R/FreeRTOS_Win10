@@ -1,5 +1,16 @@
 #include <include.h>
 
+/* This demo uses heap_5.c, and these constants define the sizes of the regions
+that make up the total heap.  heap_5 is only used for test and example purposes
+as this demo could easily create one large heap region instead of multiple
+smaller heap regions - in which case heap_4.c would be the more appropriate
+choice.  See http://www.freertos.org/a00111.html for an explanation. */
+#define mainREGION_1_SIZE	8201
+#define mainREGION_2_SIZE	29905
+#define mainREGION_3_SIZE	7607
+
+
+
 TaskHandle_t Task1_Handle = NULL;
 
 static void FreeRTOS_Task_1_Create(void);
@@ -7,8 +18,12 @@ static void FreeRTOS_Task_2_Create(void);
 static void FreeRTOS_Task_1(void* pvParameters);
 static void FreeRTOS_Task_2(void* pvParameters);
 
+static void  prvInitialiseHeap(void);
+
 void Demo_Task1(void)
 {
+	prvInitialiseHeap();
+
 	FreeRTOS_Task_1_Create();
 
 	FreeRTOS_Task_2_Create();
@@ -58,6 +73,7 @@ static void FreeRTOS_Task_1_Create(void)
 	 /*< Creating the task. */
 	if (xTaskCreate(FreeRTOS_Task_1, "Task-1", configMINIMAL_STACK_SIZE, NULL, 2U, &Task1_Handle) != pdPASS)
 	{
+		printf("task 1 creation failed\n");
 		/*< Task Creation failed. */
 		while (1);
 	}
@@ -65,8 +81,10 @@ static void FreeRTOS_Task_1_Create(void)
 
 void FreeRTOS_Task_2_Create(void)
 {
-	if (xTaskCreate(FreeRTOS_Task_2, "Task-2", configMINIMAL_STACK_SIZE, NULL, 2U, NULL))
+	if (!xTaskCreate(FreeRTOS_Task_2, "Task-2", configMINIMAL_STACK_SIZE, NULL, 2U, NULL))
 	{
+		printf("task 2 creation failed\n");
+
 		while (1);
 	}
 }
@@ -78,7 +96,11 @@ void FreeRTOS_Task_1(void* pvParameters)
 	while (taskRunning)
 	{
 		vTaskDelay(pdMS_TO_TICKS(1000));
-		printf("%s : Task1 running\n", __LINE__);
+#if 0 // will raise an exception
+		printf("Task1 running\n", __LINE__);
+#else
+		printf("task1 running\n");
+#endif
 	}
 
 	/*< A task should be deleted before the exit, the NULL parameter indicates that the calling function should be deleted. */
@@ -118,10 +140,43 @@ void FreeRTOS_Task_2(void* pvParameters)
 		 **/
 		vTaskDelayUntil(&xLastWakeupTime, pdMS_TO_TICKS(500));
 
-		printf("%s : Task2 running\n", __LINE__);
+		printf("task2 running\n");
 	}
 
 	vTaskDelete(NULL);
+}
+
+static void  prvInitialiseHeap(void)
+{
+	/* The Windows demo could create one large heap region, in which case it would
+	be appropriate to use heap_4.  However, purely for demonstration purposes,
+	heap_5 is used instead, so start by defining some heap regions.  No
+	initialisation is required when any other heap implementation is used.  See
+	http://www.freertos.org/a00111.html for more information.
+
+	The xHeapRegions structure requires the regions to be defined in start address
+	order, so this just creates one big array, then populates the structure with
+	offsets into the array - with gaps in between and messy alignment just for test
+	purposes. */
+	static uint8_t ucHeap[configTOTAL_HEAP_SIZE];
+	volatile uint32_t ulAdditionalOffset = 19; /* Just to prevent 'condition is always true' warnings in configASSERT(). */
+	const HeapRegion_t xHeapRegions[] =
+	{
+		/* Start address with dummy offsets						Size */
+		{ ucHeap + 1,											mainREGION_1_SIZE },
+		{ ucHeap + 15 + mainREGION_1_SIZE,						mainREGION_2_SIZE },
+		{ ucHeap + 19 + mainREGION_1_SIZE + mainREGION_2_SIZE,	mainREGION_3_SIZE },
+		{ NULL, 0 }
+	};
+
+	/* Sanity check that the sizes and offsets defined actually fit into the
+	array. */
+	configASSERT((ulAdditionalOffset + mainREGION_1_SIZE + mainREGION_2_SIZE + mainREGION_3_SIZE) < configTOTAL_HEAP_SIZE);
+
+	/* Prevent compiler warnings when configASSERT() is not defined. */
+	(void)ulAdditionalOffset;
+
+	vPortDefineHeapRegions(xHeapRegions);
 }
 
 /*********************************************************************************************************************************

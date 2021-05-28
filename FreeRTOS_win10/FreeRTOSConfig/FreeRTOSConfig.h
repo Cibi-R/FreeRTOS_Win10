@@ -126,4 +126,25 @@ extern void vGenerateCoreBInterrupt(void* xUpdatedMessageBuffer);
 /* Include the FreeRTOS+Trace FreeRTOS trace macro definitions. */
 #include "trcRecorder.h"
 
+/*< Select the heap memory management scheme, only one memory management scheme can defined */
+#if 0
+#define MEMMANG_SCHEME_HEAP1
+#endif
+
+#if 0 
+#define MEMMANG_SCHEME_HEAP2
+#endif
+
+#if 0 
+#define MEMMANG_SCHEME_HEAP3
+#endif
+
+#if 0
+#define MEMMANG_SCHEME_HEAP4
+#endif
+
+#if 1 
+#define MEMMANG_SCHEME_HEAP5
+#endif
+
 #endif /* FREERTOS_CONFIG_H */

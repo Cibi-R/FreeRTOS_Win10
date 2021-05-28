@@ -1,5 +1,6 @@
 #include <include.h>
 
+#if defined (MEMMANG_SCHEME_HEAP5) /*< This demo application uses heap5 memory management scheme */
 /*********************************************************************************************************************************
  *                                                     Macro definitions
  *********************************************************************************************************************************
@@ -80,8 +81,12 @@ static void  prvInitialiseHeap(void)
 	vPortDefineHeapRegions(xHeapRegions);
 }
 
-void demo1(void)
+#endif
+
+void demo1(void) 
 {
+#if defined (MEMMANG_SCHEME_HEAP5)  /*< This demo application uses heap5 memory management scheme */
+
 	const TickType_t xTimerPeriod = mainTIMER_SEND_FREQUENCY_MS;
 
 	/* This demo uses heap_5.c, so start by defining some heap regions.  heap_5 is only used for test and example reasons.
@@ -129,7 +134,13 @@ void demo1(void)
 	FreeRTOS web site for more details. */
 	for (;; );
 #endif
+
+#else
+	printf("This demo needs heap5 memory management scheme to work, please define the macro in FreeRTOS_Config.h\n");
+#endif
 }
+
+#if defined(MEMMANG_SCHEME_HEAP5) /*< This demo application uses heap5 memory management scheme */
 
 static void prvQueueSendTask(void* pvParameters)
 {
@@ -223,3 +234,5 @@ static void prvQueueReceiveTask(void* pvParameters)
 		}
 	}
 }
+
+#endif //MEMMANG_SCHEME_HEAP5

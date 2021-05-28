@@ -145,6 +145,10 @@
     <ClCompile Include="FreeRTOS\Source\croutine.c" />
     <ClCompile Include="FreeRTOS\Source\event_groups.c" />
     <ClCompile Include="FreeRTOS\Source\list.c" />
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_1.c" />
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_2.c" />
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_3.c" />
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_4.c" />
     <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_5.c" />
     <ClCompile Include="FreeRTOS\Source\portable\MSVC-MingW\port.c" />
     <ClCompile Include="FreeRTOS\Source\queue.c" />
@@ -152,6 +156,8 @@
     <ClCompile Include="FreeRTOS\Source\tasks.c" />
     <ClCompile Include="FreeRTOS\Source\timers.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo1\src\Demo1.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Heap\src\Demo_Heap1.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Heap\src\Demo_Heap2.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Main\src\Demo_main.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task1.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task2.c" />
@@ -171,6 +177,8 @@
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcPortDefines.h" />
     <ClInclude Include="FreeRTOS-Plus-Trace\Include\trcRecorder.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo1\api\Demo1.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Heap\api\Demo_Heap1.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Heap\api\Demo_Heap2.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Main\api\Demo_main.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task1.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task2.h" />
@@ -213,7 +221,11 @@
     <Text Include="FreeRTOS\Source\portable\readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="FreeRTOS_Demo\Demo_Task\image\task.JPG" />
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\heap1.JPG" />
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\heap2.JPG" />
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\Heap4.JPG" />
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\Heap5.JPG" />
+    <Image Include="FreeRTOS_Demo\Demo_Task\img\task.JPG" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

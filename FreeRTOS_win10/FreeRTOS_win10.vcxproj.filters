@@ -69,6 +69,24 @@
     <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Heap\src\Demo_Heap1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Heap\src\Demo_Heap2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\include.h">
@@ -176,6 +194,12 @@
     <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Heap\api\Demo_Heap1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Heap\api\Demo_Heap2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="FreeRTOS\Source\include\stdint.readme" />
@@ -192,7 +216,19 @@
     <Text Include="FreeRTOS\readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="FreeRTOS_Demo\Demo_Task\image\task.JPG">
+    <Image Include="FreeRTOS_Demo\Demo_Task\img\task.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\heap1.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\heap2.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\Heap4.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="FreeRTOS_Demo\Demo_Heap\img\Heap5.JPG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
