@@ -1,5 +1,6 @@
 #include <include.h>
 
+#ifdef MEMMANG_SCHEME_HEAP5
 /* This demo uses heap_5.c, and these constants define the sizes of the regions
 that make up the total heap.  heap_5 is only used for test and example purposes
 as this demo could easily create one large heap region instead of multiple
@@ -20,15 +21,22 @@ static void FreeRTOS_Task_2(void* pvParameters);
 
 static void  prvInitialiseHeap(void);
 
+#endif
+
 void Demo_Task1(void)
 {
+#if defined(MEMMANG_SCHEME_HEAP5)
 	prvInitialiseHeap();
 
 	FreeRTOS_Task_1_Create();
 
 	FreeRTOS_Task_2_Create();
+#else
+	printf("this demo needs heap5 scheme to work properly.\n");
+#endif
 }
 
+#if defined(MEMMANG_SCHEME_HEAP5)
 static void FreeRTOS_Task_1_Create(void)
 {
 	/**
@@ -178,6 +186,7 @@ static void  prvInitialiseHeap(void)
 
 	vPortDefineHeapRegions(xHeapRegions);
 }
+#endif
 
 /*********************************************************************************************************************************
  * NOTE: Top level task states

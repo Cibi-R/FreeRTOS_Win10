@@ -87,6 +87,15 @@
     <ClCompile Include="FreeRTOS\Source\portable\MemMang\heap_4.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Queue\src\Demo_Queue1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Queue\src\Demo_Queue2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS_Demo\Demo_Timer\src\Demo_Timer1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\include.h">
@@ -200,6 +209,15 @@
     <ClInclude Include="FreeRTOS_Demo\Demo_Heap\api\Demo_Heap2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Queue\api\Demo_Queue1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Queue\api\Demo_Queue2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS_Demo\Demo_Timer\api\Demo_Timer1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="FreeRTOS\Source\include\stdint.readme" />
@@ -214,6 +232,7 @@
     <Text Include="FreeRTOS\Source\lexicon.txt" />
     <Text Include="FreeRTOS\History.txt" />
     <Text Include="FreeRTOS\readme.txt" />
+    <Text Include="docs\FreeRTOS_Config_Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="FreeRTOS_Demo\Demo_Task\img\task.JPG">
@@ -229,6 +248,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="FreeRTOS_Demo\Demo_Heap\img\Heap5.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="FreeRTOS_Demo\Demo_Queue\img\image1.JPG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

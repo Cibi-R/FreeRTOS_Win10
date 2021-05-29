@@ -139,11 +139,11 @@ extern void vGenerateCoreBInterrupt(void* xUpdatedMessageBuffer);
 #define MEMMANG_SCHEME_HEAP3
 #endif
 
-#if 0
+#if 1
 #define MEMMANG_SCHEME_HEAP4
 #endif
 
-#if 1 
+#if 0 
 #define MEMMANG_SCHEME_HEAP5
 #endif
 

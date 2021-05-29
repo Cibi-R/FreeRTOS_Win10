@@ -23,6 +23,9 @@
 #include "FreeRTOS_Demo/Demo_Task/api/Demo_Task2.h"
 #include "FreeRTOS_Demo/Demo_Heap/api/Demo_Heap1.h"
 #include "FreeRTOS_Demo/Demo_Heap/api/Demo_Heap2.h"
+#include "FreeRTOS_Demo/Demo_Queue/api/Demo_Queue1.h"
+#include "FreeRTOS_Demo/Demo_Queue/api/Demo_Queue2.h"
+#include "FreeRTOS_Demo/Demo_Timer/api/Demo_Timer1.h"
 #include "FreeRTOS_Demo/Demo1/api/Demo1.h"
 
 #endif //__INCLUDE_H__

@@ -6,6 +6,7 @@
 
 /*< Macro to enable/disable individual demo application */
 #define ENABLE_DEMO_1                   0
-#define ENABLE_DEMO_TASK                1
+#define ENABLE_DEMO_TASK                0
+#define ENABLE_DEMO_TIMER               1
 
 #endif //__DEMOCONFIG_H__

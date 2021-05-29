@@ -89,6 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS-Plus-Trace\Include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS-Plus-Trace\config;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOSConfig;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS\Source\portable\MSVC-MingW;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10\FreeRTOS\Source\include;D:\CB Learning\Operating System\FreeRTOS\FreeRTOS_Win10\FreeRTOS_win10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4574;4820;4668;4255;4710;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,8 +160,11 @@
     <ClCompile Include="FreeRTOS_Demo\Demo_Heap\src\Demo_Heap1.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Heap\src\Demo_Heap2.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Main\src\Demo_main.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Queue\src\Demo_Queue1.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Queue\src\Demo_Queue2.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task1.c" />
     <ClCompile Include="FreeRTOS_Demo\Demo_Task\src\Demo_Task2.c" />
+    <ClCompile Include="FreeRTOS_Demo\Demo_Timer\src\Demo_Timer1.c" />
     <ClCompile Include="FreeRTOS_Stub\FreeRTOS_Stub.c" />
     <ClCompile Include="FreeRTOS_Stub\Run-time-stats-utils.c" />
     <ClCompile Include="sys\sys.c" />
@@ -180,8 +184,11 @@
     <ClInclude Include="FreeRTOS_Demo\Demo_Heap\api\Demo_Heap1.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Heap\api\Demo_Heap2.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Main\api\Demo_main.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Queue\api\Demo_Queue1.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Queue\api\Demo_Queue2.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task1.h" />
     <ClInclude Include="FreeRTOS_Demo\Demo_Task\api\Demo_Task2.h" />
+    <ClInclude Include="FreeRTOS_Demo\Demo_Timer\api\Demo_Timer1.h" />
     <ClInclude Include="include\DemoConfig.h" />
     <ClInclude Include="include\include.h" />
     <ClInclude Include="FreeRTOS\Source\include\atomic.h" />
@@ -214,6 +221,7 @@
     <None Include="FreeRTOS\Source\portable\MemMang\ReadMe.url" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="docs\FreeRTOS_Config_Readme.txt" />
     <Text Include="FreeRTOS\History.txt" />
     <Text Include="FreeRTOS\License\license.txt" />
     <Text Include="FreeRTOS\readme.txt" />
@@ -225,6 +233,7 @@
     <Image Include="FreeRTOS_Demo\Demo_Heap\img\heap2.JPG" />
     <Image Include="FreeRTOS_Demo\Demo_Heap\img\Heap4.JPG" />
     <Image Include="FreeRTOS_Demo\Demo_Heap\img\Heap5.JPG" />
+    <Image Include="FreeRTOS_Demo\Demo_Queue\img\image1.JPG" />
     <Image Include="FreeRTOS_Demo\Demo_Task\img\task.JPG" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

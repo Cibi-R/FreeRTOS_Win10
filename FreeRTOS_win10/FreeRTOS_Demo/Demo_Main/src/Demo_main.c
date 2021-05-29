@@ -3,11 +3,17 @@
 
 void RunFreeRTOS_Demo(void)
 {
+
 #if (ENABLE_DEMO_1 == 1)
 	demo1();
 #endif
+
 #if (ENABLE_DEMO_TASK == 1)
 	Demo_Task1();
+#endif
+
+#if (ENABLE_DEMO_TIMER == 1)
+	Demo_Timer1();
 #endif
 
 	/*< Start the scheduler */
